@@ -43,14 +43,15 @@ open class ASBaseViewController: UIViewController {
     }
     
     private func setLeftBarItem(selector: Selector, normalImageName: String, highlightImageName: String) {
-
-        let leftBarBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 47, height: 44))
+        let leftBarBtn = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 44))
         leftBarBtn.setImage(UIImage(named: normalImageName), for: .highlighted)
         leftBarBtn.setImage(UIImage(named: highlightImageName), for: .normal)
         leftBarBtn.addTarget(self, action: selector, for: .touchUpInside)
-
+        leftBarBtn.setTitleColor(.RGBH(0x333333), for: .normal)
+        leftBarBtn.titleLabel?.font = .fontWithSize(14)
         leftBarBtn.contentHorizontalAlignment = .left
-        leftBarBtn.imageEdgeInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 5)
+        leftBarBtn.semanticContentAttribute = .forceLeftToRight
+//        leftBarBtn.imageEdgeInsets = UIEdgeInsets(top: 9, left: 0, bottom: 9, right: 5)
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: leftBarBtn)
     }
     
@@ -64,3 +65,4 @@ open class ASBaseViewController: UIViewController {
         navVC.popViewController(animated: true)
     }
 }
+

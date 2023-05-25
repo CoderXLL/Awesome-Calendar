@@ -43,15 +43,15 @@ extension AppConfigurable where Self: AppDelegate {
         
         if #available(iOS 15.0, *) {
             let navBarAppearance = UINavigationBarAppearance()
-            navBarAppearance.shadowImage = UIImage()
-            navBarAppearance.backgroundImage = UIImage.imageWithColor(color: .asRed)
+            navBarAppearance.shadowImage = UIImage.imageWithColor(color: .clear)
+            navBarAppearance.backgroundImage = UIImage.imageWithColor(color: .white)
             navBarAppearance.titleTextAttributes = textAttributes
             UINavigationBar.appearance().standardAppearance = navBarAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
         } else {
             UINavigationBar.appearance().titleTextAttributes = textAttributes
-            UINavigationBar.appearance().shadowImage = UIImage()
-            UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(color: .asRed), for: .default)
+            UINavigationBar.appearance().shadowImage = UIImage.imageWithColor(color: .clear)
+            UINavigationBar.appearance().setBackgroundImage(UIImage.imageWithColor(color: .white), for: .default)
         }
         
         UINavigationBar.appearance().isTranslucent = false
@@ -83,3 +83,4 @@ extension AppConfigurable where Self: AppDelegate {
         }
     }
 }
+

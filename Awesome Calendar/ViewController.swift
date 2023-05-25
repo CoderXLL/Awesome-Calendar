@@ -30,7 +30,6 @@ class ViewController: ASBaseViewController {
         }
         view.addGestureRecognizer(scopeGesture)
         
-        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: leftBarButton)]
         let lunarBtn: UIButton = {
             let button = UIButton(type: .custom)
             button.setTitle("显示阴历", for: .normal)
@@ -43,6 +42,10 @@ class ViewController: ASBaseViewController {
             return button
         }()
         navigationItem.rightBarButtonItems = [UIBarButtonItem(customView: lunarBtn)]
+        
+        if let leftBarButton = navigationItem.leftBarButtonItem?.customView as? UIButton {
+            leftBarButton.setTitle(dateFormatter.string(from: calendarView.currentPage), for: .normal)
+        }
     }
     
     @objc private func onLunarBtnClick(_ sender: UIButton) {
@@ -83,18 +86,6 @@ class ViewController: ASBaseViewController {
         return formatter
     }()
     
-    private lazy var leftBarButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.setTitleColor(.gray, for: .normal)
-        button.titleLabel?.font = .fontWithSize(14, .regular)
-        button.setImage(UIImage(named: "navigationbar_back_gray"), for: .normal)
-        button.titleEdgeInsets = UIEdgeInsets(top: 0, left: -2, bottom: 0, right: 2)
-        button.imageEdgeInsets = UIEdgeInsets(top: 0, left: -8, bottom: 0, right: 8)
-        button.setTitle(dateFormatter.string(from: calendarView.currentPage), for: .normal)
-        button.addTarget(self, action: #selector(onBack(_:)), for: .touchUpInside)
-        return button
-    }()
-    
     private lazy var holidayImage: UIImage? = {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
         label.textColor = .blue
@@ -114,8 +105,9 @@ extension ViewController: FSCalendarDelegateAppearance, FSCalendarDataSource {
     }
 
     func calendarCurrentPageDidChange(_ calendar: FSCalendar) {
-        leftBarButton.setTitle(dateFormatter.string(from: calendar.currentPage), for: .normal)
-        navigationItem.leftBarButtonItems = [UIBarButtonItem(customView: leftBarButton)]
+        if let leftBarButton = navigationItem.leftBarButtonItem?.customView as? UIButton {
+            leftBarButton.setTitle(dateFormatter.string(from: calendar.currentPage), for: .normal)
+        }
     }
     
     // 农历
@@ -162,4 +154,5 @@ extension ViewController: UIGestureRecognizerDelegate {
         }
     }
 }
+
 
