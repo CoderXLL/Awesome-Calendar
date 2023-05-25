@@ -1,0 +1,20 @@
+PODS:
+  - FSCalendar (2.8.4)
+  - SnapKit (4.2.0)
+
+DEPENDENCIES:
+  - FSCalendar
+  - SnapKit (~> 4.0)
+
+SPEC REPOS:
+  https://mirrors.tuna.tsinghua.edu.cn/git/CocoaPods/Specs.git:
+    - FSCalendar
+    - SnapKit
+
+SPEC CHECKSUMS:
+  FSCalendar: 2d1d0d9398f12d439f55c1fe0f01525b151b8260
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+
+PODFILE CHECKSUM: 3a1e1d38489e7cfd19ee4a3eb2052a89238cd598
+
+COCOAPODS: 1.12.1

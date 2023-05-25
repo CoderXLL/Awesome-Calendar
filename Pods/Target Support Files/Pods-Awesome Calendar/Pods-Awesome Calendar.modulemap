@@ -1,0 +1,6 @@
+framework module Pods_Awesome_Calendar {
+  umbrella header "Pods-Awesome Calendar-umbrella.h"
+
+  export *
+  module * { export * }
+}
